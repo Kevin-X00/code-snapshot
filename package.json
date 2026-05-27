@@ -1,0 +1,13 @@
+{
+  "name": "code-snapshot",
+  "version": "1.0.0",
+  "description": "Take a snapshot of your codebase — merge all project files into one text block for AI agents (Claude Code, ChatGPT, Codex, etc.). Stop copying files manually.",
+  "main": "index.js",
+  "bin": { "code-snapshot": "./index.js", "snap": "./index.js" },
+  "type": "module",
+  "scripts": { "test": "node --test" },
+  "keywords": ["code-snapshot", "ai", "claude", "chatgpt", "context", "codebase", "agent"],
+  "author": "Kevin-X00",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/Kevin-X00/code-snapshot.git" }
+}
