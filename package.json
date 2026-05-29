@@ -1,5 +1,5 @@
 {
-  "name": "@Kevin-X00/code-snapshot",
+  "name": "@kevinxyz/code-snapshot",
   "version": "1.0.0",
   "description": "Take a snapshot of your codebase — merge all project files into one text block for AI agents (Claude Code, ChatGPT, Codex, etc.). Stop copying files manually.",
   "main": "index.js",
