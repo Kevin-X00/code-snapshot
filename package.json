@@ -1,5 +1,5 @@
 {
-  "name": "code-snapshot",
+  "name": "@Kevin-X00/code-snapshot",
   "version": "1.0.0",
   "description": "Take a snapshot of your codebase — merge all project files into one text block for AI agents (Claude Code, ChatGPT, Codex, etc.). Stop copying files manually.",
   "main": "index.js",
@@ -9,5 +9,6 @@
   "keywords": ["code-snapshot", "ai", "claude", "chatgpt", "context", "codebase", "agent"],
   "author": "Kevin-X00",
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/Kevin-X00/code-snapshot.git" }
+  "publishConfig": { "access": "public" },
+  "repository": { "type": "git", "url": "git+ssh://git@github.com:Kevin-X00/code-snapshot.git" }
 }
