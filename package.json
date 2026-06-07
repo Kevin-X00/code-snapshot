@@ -1,6 +1,6 @@
 {
   "name": "@kevinxyz/code-snapshot",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Merge your codebase into one text block for AI agents. Stop copying files manually.",
   "main": "index.js",
   "bin": {
@@ -14,17 +14,32 @@
     "start": "node index.js ."
   },
   "keywords": [
-    "code-snapshot", "ai", "claude", "chatgpt", "context",
-    "codebase", "agent", "claude-code", "cursor", "copilot",
-    "codex", "prompt", "llm", "developer-tool"
+    "code-snapshot",
+    "ai",
+    "claude",
+    "chatgpt",
+    "context",
+    "codebase",
+    "agent",
+    "claude-code",
+    "cursor",
+    "copilot",
+    "codex",
+    "prompt",
+    "llm",
+    "developer-tool"
   ],
   "author": "Kevin-X00",
   "license": "MIT",
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:Kevin-X00/code-snapshot.git"
   },
   "homepage": "https://kevin-x00.github.io/code-snapshot",
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
