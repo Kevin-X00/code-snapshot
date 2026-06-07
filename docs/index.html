@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>code-snapshot — Merge your codebase for AI agents</title>
+  <meta name="description" content="Merge your codebase into one text block for AI agents. One command, done." />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --orange: #d29922;
+      --border: #30363d;
+      --card: #161b22;
+      --font: 'SF Mono','Cascadia Code','JetBrains Mono',monospace;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    header { text-align: center; padding: 3rem 0 2rem; }
+    .logo { font-size: 3rem; }
+    h1 { font-size: 2.2rem; font-weight: 700; margin: 0.5rem 0; color: #fff; }
+    .tagline { font-size: 1.1rem; color: var(--fg); opacity: 0.8; max-width: 600px; margin: 0.5rem auto; }
+
+    .install {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .install code {
+      display: block;
+      background: #1a1f2b;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      color: var(--green);
+      margin: 1rem 0;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+      word-break: break-all;
+    }
+    .install code:hover { border-color: var(--accent); }
+    .install small { opacity: 0.6; font-size: 0.85rem; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .feature .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .feature h3 { color: #fff; margin-bottom: 0.5rem; }
+    .feature p { font-size: 0.9rem; opacity: 0.75; }
+    .feature code { background: #1a1f2b; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+
+    .examples { margin: 2.5rem 0; }
+    .examples h2 { color: #fff; margin-bottom: 1rem; font-size: 1.4rem; }
+    .example {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .example .cmd { color: var(--green); font-weight: 600; }
+    .example .desc { opacity: 0.7; font-size: 0.85rem; margin-top: 0.3rem; }
+
+    .cta { text-align: center; margin: 3rem 0; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: var(--font);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+    }
+    .btn-primary:hover { background: #79b8ff; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+      margin-left: 1rem;
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    .footer { text-align: center; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 3rem; font-size: 0.85rem; opacity: 0.6; }
+
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      h1 { font-size: 1.6rem; }
+      .btn-secondary { margin-left: 0; margin-top: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">📸</div>
+      <h1>code-snapshot</h1>
+      <p class="tagline">
+        Merge your entire codebase into one text block for AI agents.
+        Stop copy-pasting files manually.
+      </p>
+    </header>
+
+    <div class="install">
+      <p>Install globally:</p>
+      <code id="install-cmd">npm install -g @kevinxyz/code-snapshot</code>
+      <p>Then run anywhere:</p>
+      <code id="use-cmd">snap ./src | claude</code>
+      <small>⚡ Works with Claude Code, ChatGPT, Codex, Cursor, Copilot — any AI agent.</small>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>One Command</h3>
+        <p><code>snap ./src</code> — walks your directory, respects <code>.gitignore</code>, wraps files with clear markers.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h3>Git-Aware</h3>
+        <p><code>--git-only</code> includes only changed files. <code>--minify</code> strips comments to save tokens.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🧩</div>
+        <h3>Flexible Output</h3>
+        <p>Pipe to AI, write to file, copy to clipboard. <code>--format xml</code>, <code>--json</code>, or default markers.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Token Aware</h3>
+        <p>Every output shows estimated token count. <code>--tokens</code> flag, <code>--top-files</code> to spot bloat.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💬</div>
+        <h3>Interactive Mode</h3>
+        <p><code>snap . -i</code> — pick files, choose format, decide output. Perfect when you need control.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔌</div>
+        <h3>Universal</h3>
+        <p>Works with any AI agent. <code>snap . | claude</code>, pipe to ChatGPT, or paste into Cursor.</p>
+      </div>
+    </div>
+
+    <div class="examples">
+      <h2>Quick Examples</h2>
+      <div class="example">
+        <div class="cmd">snap . | claude</div>
+        <div class="desc">Snapshot your whole project and pipe into Claude Code</div>
+      </div>
+      <div class="example">
+        <div class="cmd">snap . --git-only -o diff.txt</div>
+        <div class="desc">Only files changed since last commit</div>
+      </div>
+      <div class="example">
+        <div class="cmd">snap . -i --tokens</div>
+        <div class="desc">Interactive file picker with token estimation</div>
+      </div>
+      <div class="example">
+        <div class="cmd">snap ./src --minify --exclude "*.test.js"</div>
+        <div class="desc">Minify code, skip test files</div>
+      </div>
+      <div class="example">
+        <div class="cmd">snap . --json -o codebase.json</div>
+        <div class="desc">Machine-readable JSON output</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="https://github.com/Kevin-X00/code-snapshot" class="btn btn-primary" target="_blank">⭐ GitHub</a>
+      <a href="https://www.npmjs.com/package/@kevinxyz/code-snapshot" class="btn btn-secondary" target="_blank">📦 npm</a>
+    </div>
+
+    <div class="footer">
+      <p>MIT — free for everyone. A ⭐ on GitHub helps others find it.</p>
+    </div>
+  </div>
+
+  <script>
+    // Click-to-copy on install commands
+    document.querySelectorAll('code').forEach(el => {
+      el.addEventListener('click', () => {
+        navigator.clipboard.writeText(el.textContent.trim()).catch(() => {});
+        const orig = el.textContent;
+        el.textContent = '✓ Copied!';
+        setTimeout(() => { el.textContent = orig; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>
