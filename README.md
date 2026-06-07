@@ -8,6 +8,12 @@ Stop manually copy-pasting files into ChatGPT, Claude Code, Codex, or Cursor. On
 npm install -g @kevinxyz/code-snapshot
 ```
 
+已安装的用户更新到最新版:
+
+```bash
+npm update -g @kevinxyz/code-snapshot
+```
+
 **Just run it in your project root (no arguments = current dir):**
 
 ```bash
