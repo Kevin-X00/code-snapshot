@@ -31,6 +31,70 @@ Every developer using AI coding tools has the same ritual: open 10 files, copy-p
 
 **code-snapshot automates this.** One command gives you a clean, structured text block your AI agent can immediately understand.
 
+## Real Scenario
+
+You have a project and want AI to help add a new feature. Without code-snapshot:
+
+```bash
+# Manual: open each file, copy-paste one by one to AI
+src/index.js          → copy → paste to AI
+src/utils/parser.js   → copy → paste to AI
+src/config.js         → copy → paste to AI
+package.json          → copy → paste to AI
+...
+# 10 files = 10 copy-pastes, easy to miss something
+# AI says "I can't find the definition" → go back, find the file, copy again
+```
+
+With code-snapshot:
+
+```bash
+# One command, everything in one place
+snap . -o context.txt
+# Then drag context.txt into your AI chat
+# AI gets full context in one shot, no back-and-forth
+```
+
+### Real output example
+
+Run `snap` in your project, and you get:
+
+```
+============================================================
+📸 CODE SNAPSHOT
+============================================================
+Generated: 2026-06-07T12:33:00.000Z
+Source: /my-project
+Files scanned: 12
+============================================================
+
+// [FILE] package.json
+// [LANG] JSON
+// [SIZE] 800 chars | ~200 tokens
+{ "name": "my-project", ... }
+
+// [FILE] src/index.js
+// [LANG] JavaScript
+// [SIZE] 3400 chars | ~850 tokens
+import { parseFile } from './utils/parser';
+...
+
+// [FILE] src/utils/parser.js
+// [LANG] JavaScript
+// [SIZE] 5200 chars | ~1300 tokens
+export function parseFile(path) { ... }
+...
+
+============================================================
+END OF SNAPSHOT
+============================================================
+12 files | ~15000 chars | ~3750 tokens
+```
+
+Then you tell AI: *"Above is my full codebase. Please add a feature to export each page as an image."*
+
+**AI understands instantly** — no need to paste files one by one, no missing context.
+
 ## Features (v2)
 
 | Feature | CLI Flag | Description |
