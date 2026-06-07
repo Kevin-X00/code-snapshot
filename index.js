@@ -387,8 +387,9 @@ async function main() {
 
   // Stat root
   let files = [];
+  let stat;
   try {
-    const stat = fs.statSync(root);
+    stat = fs.statSync(root);
     if (stat.isFile()) {
       files = [root];
     } else if (stat.isDirectory()) {
