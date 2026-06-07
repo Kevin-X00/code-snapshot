@@ -18,6 +18,7 @@ npm update -g @kevinxyz/code-snapshot
 
 ```bash
 snap
+# → generates snapshot.txt in the current directory
 ```
 
 Then pipe directly to any AI (replace `.` with your folder):
@@ -124,7 +125,10 @@ Then you tell AI: *"Above is my full codebase. Please add a feature to export ea
 ## Quick Examples
 
 ```bash
-# Everything you need for your AI prompt
+# Default: writes snapshot.txt to current directory
+snap .
+
+# Custom output file
 snap . -o context.txt
 
 # Just what changed today (git diff)

@@ -519,7 +519,10 @@ async function main() {
       console.log(output);
     }
   } else {
-    console.log(output);
+    // Default: write snapshot.txt in current directory
+    const defaultOut = 'snapshot.txt';
+    fs.writeFileSync(process.cwd() + '/' + defaultOut, output, 'utf-8');
+    console.log(`✅ Written to ${defaultOut} (${output.length} chars, ~${estimateTokens(output)} tokens)`);
   }
 }
 
