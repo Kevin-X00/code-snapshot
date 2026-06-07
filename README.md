@@ -6,17 +6,24 @@ Stop manually copy-pasting files into ChatGPT, Claude Code, Codex, or Cursor. On
 
 ```bash
 npm install -g @kevinxyz/code-snapshot
-snap ./src
 ```
 
-Then pipe directly to any AI:
+**Just run it in your project root (no arguments = current dir):**
 
 ```bash
-snap . | claude             # Pipe to Claude Code
-snap . -i --tokens          # Interactive + token estimate
-snap . --git-only -o ctx.txt # Just changed files
-snap ./src --copy            # Copy to clipboard
+snap
 ```
+
+Then pipe directly to any AI (replace `.` with your folder):
+
+```bash
+snap . | claude                  # Pipe to Claude Code
+snap . -i --tokens               # Interactive + token estimate
+snap . --git-only -o ctx.txt     # Just changed files
+snap . --copy                    # Copy to clipboard
+```
+
+> 💡 **Tip:** `snap` with no args uses the current directory. If you get `ENOENT`, it means the folder doesn't exist — just run `snap .` in your project root.
 
 ## Why code-snapshot?
 
@@ -48,7 +55,7 @@ Every developer using AI coding tools has the same ritual: open 10 files, copy-p
 
 ```bash
 # Everything you need for your AI prompt
-snap ./src -o context.txt
+snap . -o context.txt
 
 # Just what changed today (git diff)
 snap . --git-only
@@ -57,7 +64,7 @@ snap . --git-only
 snap . -i
 
 # Clean it up to save tokens
-snap ./lib --minify --exclude "*.test.js,*.spec.js"
+snap . --minify --exclude "*.test.js,*.spec.js"
 
 # See token count before you use it
 snap . --tokens
@@ -69,7 +76,7 @@ snap . --top-files
 snap . --json -o codebase.json
 
 # Quick clipboard
-snap ./src --copy
+snap . --copy
 
 # Different output format
 snap . --format xml
