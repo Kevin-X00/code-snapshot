@@ -8,7 +8,7 @@ Stop manually copy-pasting files into ChatGPT, Claude Code, Codex, or Cursor. On
 npm install -g @kevinxyz/code-snapshot
 ```
 
-已安装的用户更新到最新版:
+Already installed? Update to the latest:
 
 ```bash
 npm update -g @kevinxyz/code-snapshot
@@ -29,7 +29,7 @@ snap . --git-only -o ctx.txt     # Just changed files
 snap . --copy                    # Copy to clipboard
 ```
 
-> 💡 **Tip:** `snap` with no args uses the current directory. If you get `ENOENT`, it means the folder doesn't exist — just run `snap .` in your project root.
+> 💡 **Tip:** `snap` with no arguments uses the current directory. If you see `ENOENT`, the folder doesn't exist — run `snap .` in your project root instead.
 
 ## Why code-snapshot?
 
